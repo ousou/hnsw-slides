@@ -158,10 +158,19 @@
   \end{figure} 
   \end{frame}         
 
+  \begin{frame}
+    \frametitle{Drawbacks}  
+   	\begin{itemize}
+   	\Large
+		\item Delaunay graph intractable to construct for large, high-dimensional data sets
+		\item Greedy search might be slow if graph is large
+	\end{itemize}   
+  \end{frame}
+
 \section{HNSW algorithm}
 \subsection{Idea behind algorithm}
   \begin{frame}
-    \frametitle{Asymmetric distance functions}  
+    \frametitle{Navigable small world graph}  
     \Large Why?
    	\begin{itemize}
 		\item Can help us the direction of the prior art
@@ -171,7 +180,7 @@
   \end{frame}
 
   \begin{frame}
-    \frametitle{Asymmetric distance functions}  
+    \frametitle{}  
     \Large How?
    	\begin{itemize}
 		\item We can learn a distribution for a document instead of just a single vector
@@ -505,14 +514,20 @@
 
 \subsection{Build time}
 
-\begin{frame}
-\frametitle{Summary}
-  \begin{itemize}
-      \item We can give model more relevant data by using the citations and metadata more efficiently
-      \item Learning distributions instead of just embeddings enables modelling asymmetry of prior art relations
-      \item Might be possible to get better explanations by comparing node embeddings
-  \end{itemize}
-\end{frame}
+\section{}
+  \begin{frame}
+    \frametitle{References}  
+    \small
+    \begin{itemize}
+	\item \textit{Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs (Malkov et al.} \url{https://arxiv.org/abs/1603.09320}    
+
+	\item \textit{Approximate nearest neighbor algorithm based on navigable small world graphs (Malkov et al} \url{https://doi.org/10.1016/j.is.2013.10.006}	
+	\item \textit{Voronoi diagrams—a survey of a fundamental geometric data structure (Aurenhammer)} \url{https://dl.acm.org/doi/10.1145/116873.116880}
+	\item \textit{Hierarchical Navigable Small Worlds (HNSW) (Pinecone blog)} \url{https://www.pinecone.io/learn/hnsw/}
+	\end{itemize}
+	
+  \end{frame}
+
 
 
 \end{document}
