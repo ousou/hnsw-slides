@@ -6,6 +6,8 @@
 \usepackage{tikz}
 \usepackage{graphicx}
 \usepackage{forest}
+\usepackage{svg}
+
 \usetikzlibrary{matrix}
 \graphicspath{ {./} }
 
@@ -204,6 +206,49 @@
     }
     \end{itemize}
   \end{frame}
+  
+  \begin{frame}
+    \frametitle{Making Delaunay graph navigable}  
+          \begin{figure}[delaunay_triangulation_256_points]
+  \includesvg[scale=0.5]{delaunay_triangulation_256_points}
+  \end{figure}
+  \vspace{-0.5cm}
+    \centering 256 nodes
+  \end{frame}  
+
+  \begin{frame}
+    \frametitle{Making Delaunay graph navigable}  
+          \begin{figure}[delaunay_triangulation_start_end_points]
+  \includesvg[scale=0.5]{delaunay_triangulation_start_end_points}
+  \end{figure}
+  \end{frame}  
+
+  \begin{frame}
+    \frametitle{Making Delaunay graph navigable}  
+          \begin{figure}[delaunay_triangulation_longest_path]
+  \includesvg[scale=0.5]{delaunay_triangulation_longest_path}
+  \end{figure}
+  \vspace{-0.5cm}
+    \centering Length of path: 19
+  \end{frame}  
+
+  \begin{frame}
+    \frametitle{Making Delaunay graph navigable}  
+          \begin{figure}[delaunay_triangulation_random_edges]
+  \includesvg[scale=0.5]{delaunay_triangulation_random_edges}
+  \end{figure}
+  \vspace{-0.5cm}
+    \centering 32 random edges added
+  \end{frame}  
+
+  \begin{frame}
+    \frametitle{Making Delaunay graph navigable}  
+          \begin{figure}[delaunay_triangulation_random_edges_shortest_path]
+  \includesvg[scale=0.5]{delaunay_triangulation_random_edges_shortest_path}
+  \end{figure}
+  \vspace{-0.5cm}
+    \centering Length of path: 5
+  \end{frame}  
 
 
   \begin{frame}
@@ -221,6 +266,7 @@
     }
     \end{itemize}
   \end{frame}
+   
 
   \begin{frame}
     \frametitle{Constructing NSW graph}  
