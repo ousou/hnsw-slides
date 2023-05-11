@@ -29,7 +29,7 @@
 \def\insertinstituteindicator{From?}% Default is "From?"
 \def\insertdateindicator{When?}% Default is "When?"
 
-\title{Nearest neighbor search using the Hierarchical Navigable Small World (HNSW) algorithm}
+\title{Approximate nearest neighbor search using the Hierarchical Navigable Small World (HNSW) algorithm}
 
 \author{Sebastian Bj{\"o}rkqvist}
 \institute{Lead AI Developer, IPRally}
@@ -170,12 +170,67 @@
 \section{HNSW algorithm}
 \subsection{Idea behind algorithm}
   \begin{frame}
-    \frametitle{Navigable small world graph}  
-    \Large Why?
+    \frametitle{Navigable small world (NSW) graph}  
+    \Large
    	\begin{itemize}
-		\item Can help us the direction of the prior art
-		\item User might be interested also in finding infringing patents
-		\item Currently we can't model this asymmetry
+   		\onslide<2->{
+		\item Small world graph}
+		\begin{itemize}
+		\onslide<3->{\item Distance of two random nodes is $log \text{ } N$, where $N$ is the number of nodes in graph}
+		\onslide<4->{\item Neighbors of a given node are likely to be neighbors of another (clustering coefficient is high)}
+		\end{itemize}
+		\onslide<5->{		
+		\item Navigability}
+		\onslide<6->{
+		\begin{itemize}
+		\item Greedy search algorithm has logarithmic scalability
+		\end{itemize}
+		}
+	\end{itemize}   
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Why is an NSW useful for nearest neighbor search?}  
+    \Large
+    \begin{itemize}
+    \onslide<2->{
+    \item Logarithmic distance allows us to get anywhere in the graph quickly
+    }
+    \onslide<3->{
+    \item Navigability ensures that the greedy algorithm finds the logaritmic path
+    }
+    \onslide<4->{
+    \item High clustering coefficient lets us zoom in on the actual correct node when we're in the right area
+    }
+    \end{itemize}
+  \end{frame}
+
+
+  \begin{frame}
+    \frametitle{Properties of NSW graph}  
+    \Large
+    \onslide<2->{
+    \begin{itemize}
+    \item An NSW graph is not necessarily a Delaunay graph (or have one as a subgraph)
+    }
+    \onslide<3->{
+    \item Thus the greedy algorithm doesn't always return the actual nearest neighbor
+    }
+    \onslide<4->{
+    \item Ok since we're doing approximate nearest neighbor search!   
+    }
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Constructing NSW graph}  
+    \Large
+   	\begin{itemize}
+   		\onslide<2->{
+		\item Approximation of graph is enough (since we're doing approximate nearest neighbor search)}
+		\onslide<3->{		
+		\item Navigability: Greedy search algorithm has logarithmic scalability
+		}
 	\end{itemize}   
   \end{frame}
 
