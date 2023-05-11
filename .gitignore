@@ -265,3 +265,4 @@ TSWLatexianTemp*
 ./auto/*
 *.el
 
+.venv
