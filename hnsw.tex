@@ -343,6 +343,26 @@
   \end{frame}
 
   \begin{frame}
+    \frametitle{kNN search algorithm}  
+   	\begin{enumerate}
+
+   		\onslide<2->{
+		\item Select any graph node as initial candidate, initialize candidates priority queue with initial candidate, initialize empty result priority queue}
+		\onslide<3->{		
+		\item Select from the candidates queue the element closest to q	
+		}
+		\onslide<4->{		
+		\item Calculate distance from query to all neighbors of candidate
+		}
+		\onslide<5->{
+		\item Add to result set and to candidate queue all neighbors who are closer to query than the kth result in the queue
+		}
+		\onslide<6->{
+		\item Repeat until step 2 returns a candidate that's further away than the kth result in the queue} 
+	\end{enumerate} 
+  \end{frame}
+
+  \begin{frame}
     \frametitle{NSW drawbacks}  
     \Large
    	\begin{itemize}
@@ -362,6 +382,56 @@
 
 
 \subsection{Hierarchical navigable small world (HNSW)}
+
+\begin{frame}
+\frametitle{Inspiration: Skiplist}
+          \begin{figure}[skip_list]
+  \includesvg[scale=0.9]{skip_list}
+  \end{figure}
+  \vspace{-0.1cm}
+  \small \centering \url{https://en.wikipedia.org/wiki/Skip_list}
+\end{frame}
+
+\begin{frame}
+\frametitle{Idea: Combine NSW and skipping}
+    \Large
+   	\begin{itemize}
+   		\onslide<2->{
+		\item NSW enables finding the approximate nearest neighbors}
+		\onslide<3->{		
+		\item Skipping allows zooming in to the correct area quickly and reliably 
+		}
+		\onslide<4->{		
+		\item The zoom-in property is accomplished by a hierarchical construction, like in skiplists
+		}
+	\end{itemize} 
+\end{frame}
+
+  \begin{frame}
+    \frametitle{HNSW diagram}  
+  \begin{figure}[hnsw_paper_fig_1]
+    \vspace*{-0.1cm}
+  	\includegraphics[scale=0.3]{hnsw_paper_fig_1} 	
+  \end{figure} 
+  \vspace{-0.3cm}
+  \scriptsize \centering \textit{Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs (Malkov et al.)} \url{https://arxiv.org/abs/1603.09320} 
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{kNN search using HNSW}  
+   	\begin{enumerate}
+
+   		\onslide<2->{
+		\item Find nearest neighbor to query in top layer using greedy search algorithm, starting from any node}
+		\onslide<3->{		
+		\item Continue downwards to next layer, run greedy search starting from nearest neighbor found in previous layer}
+		\onslide<4->{		
+		\item Repeat previous step until bottom layer is reached
+		}
+		\onslide<5->{
+		\item Run kNN algorithm on bottom layer (like when using NSW)}
+	\end{enumerate} 
+  \end{frame}
   
 \subsection{Nearest neighbor search using HNSW}
 
@@ -378,9 +448,9 @@
     \frametitle{References}  
     \small
     \begin{itemize}
-	\item \textit{Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs (Malkov et al.} \url{https://arxiv.org/abs/1603.09320}    
+	\item \textit{Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs (Malkov et al.)} \url{https://arxiv.org/abs/1603.09320}    
 
-	\item \textit{Approximate nearest neighbor algorithm based on navigable small world graphs (Malkov et al} \url{https://doi.org/10.1016/j.is.2013.10.006}	
+	\item \textit{Approximate nearest neighbor algorithm based on navigable small world graphs (Malkov et al.)} \url{https://doi.org/10.1016/j.is.2013.10.006}	
 	\item \textit{Voronoi diagrams—a survey of a fundamental geometric data structure (Aurenhammer)} \url{https://dl.acm.org/doi/10.1145/116873.116880}
 	\item \textit{Hierarchical Navigable Small Worlds (HNSW) (Pinecone blog)} \url{https://www.pinecone.io/learn/hnsw/}
 	\end{itemize}
