@@ -101,7 +101,25 @@
 \subsection{Greedy NN search using Delaunay graph}
 
   \begin{frame}
-    \frametitle{Greedy NN search start - Query and entry point}  
+    \frametitle{Greedy NN search algorithm}  
+    \Large
+   	\begin{enumerate}
+   		\onslide<2->{
+		\item Select any graph node as entry node}
+		\onslide<3->{		
+		\item Calculate distance from query to current node and from query to all neighbors of current node
+		}
+		\onslide<4->{
+		\item Select neighbor with smallest distance to query as next node to visit
+		}
+		\onslide<5->{
+		\item Repeat 2 and 3 until no neighbor is closer to query than the current node}
+	\end{enumerate}  
+  \end{frame}         
+    
+
+  \begin{frame}
+    \frametitle{Greedy NN search start - Query and entry node}  
   \begin{figure}[greedy_search_start_new]
     \vspace*{-0.1cm}
   	\includegraphics[scale=0.3]{greedy_search_start_new} 	
@@ -159,18 +177,19 @@
   	\includegraphics[scale=0.3]{greedy_search_start_new_step_3_2} 	
   \end{figure} 
   \end{frame}         
+  
 
   \begin{frame}
     \frametitle{Drawbacks}  
    	\begin{itemize}
    	\Large
 		\item Delaunay graph intractable to construct for large, high-dimensional data sets
-		\item Greedy search might be slow if graph is large
+		\item Greedy search might require a lot of steps if graph is large
 	\end{itemize}   
   \end{frame}
 
 \section{HNSW algorithm}
-\subsection{Idea behind algorithm}
+\subsection{Navigable small world (NSW)}
   \begin{frame}
     \frametitle{Navigable small world (NSW) graph}  
     \Large
@@ -311,11 +330,40 @@
 	\end{itemize}   
   \end{frame}
 
+  \begin{frame}
+    \frametitle{kNN search using NSW graph}  
+    \Large
+   	\begin{itemize}
+   		\onslide<2->{
+		\item Instead of only finding the nearest neighbor, we keep track of $k$ nearest neighbors}
+		\onslide<3->{		
+		\item To improve results we can redo the search $m$ times from different start nodes
+		}
+	\end{itemize}   
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{NSW drawbacks}  
+    \Large
+   	\begin{itemize}
+   		\onslide<2->{
+		\item Greedy search may get stuck in local minimum}
+		\onslide<3->{		
+		\item Algorithm scales polylogarithmically in general (logarithmic scaling in both steps and degrees of nodes)
+		}
+		\onslide<4->{		
+		\item Performance degrades on high-dimensional data
+		}
+		\onslide<5->{		
+		\item Insertion order must be random
+		}
+	\end{itemize}   
+  \end{frame}
 
 
-\subsection{Construction of search index}
+\subsection{Hierarchical navigable small world (HNSW)}
   
-\subsection{Nearest neighbor search using index}
+\subsection{Nearest neighbor search using HNSW}
 
   \section{Performance}
 \subsection{Search accuracy}
