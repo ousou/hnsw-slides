@@ -432,18 +432,86 @@
 		\item Run kNN algorithm on bottom layer (like when using NSW)}
 	\end{enumerate} 
   \end{frame}
+
+  \begin{frame}
+    \frametitle{Construction of HNSW index}  
+
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Improvements compared to NSW}  
+    \Large
+   	\begin{itemize}
+   		\onslide<2->{
+		\item Less risk to get stuck in local minima due to long range edges being used first}   	
+   		\onslide<3->{
+		\item Logarithmic scalability of search due to hierarchical structure}
+		\onslide<4->{		
+		\item Better performance on high-dimensional data 
+		}
+		\onslide<5->{		
+		\item Insertion order can be anything - randomization happens automatically during index construction
+		}
+	\end{itemize} 
+  \end{frame}
   
 \subsection{Nearest neighbor search using HNSW}
 
   \section{Performance}
 \subsection{Search accuracy}
+  \begin{frame}
+    \frametitle{Recall vs queries per second (up and to the right is better)}  
+  \begin{figure}[annoy_vs_hnsw_vespa_recall_vs_queries_per_sec_nytimes_labels]
+    \vspace*{-0.1cm}
+  	\includegraphics[scale=0.3]{annoy_vs_hnsw_vespa_recall_vs_queries_per_sec_nytimes_labels} 	
+  \end{figure} 
+  \vspace{-0.3cm}
+  \scriptsize \centering \url{https://ann-benchmarks.com/nytimes-256-angular_10_angular.html} 
+  \end{frame}
 
 
 
 
-\subsection{Build time}
+\subsection{Build time and index size}
+
+  \begin{frame}
+    \frametitle{Recall vs build time (down and to the right is better)}  
+  \begin{figure}[annoy_vs_hnsw_vespa_recall_vs_build_time_nytimes_labels]
+    \vspace*{-0.1cm}
+  	\includegraphics[scale=0.3]{annoy_vs_hnsw_vespa_recall_vs_build_time_nytimes_labels} 	
+  \end{figure} 
+  \vspace{-0.3cm}
+  \scriptsize \centering \url{https://ann-benchmarks.com/nytimes-256-angular_10_angular.html} 
+  \end{frame}
+
+
+  \begin{frame}
+    \frametitle{Recall vs index size (down and to the right is better)}  
+  \begin{figure}[annoy_vs_hnsw_vespa_recall_vs_index_size_nytimes_labels]
+    \vspace*{-0.1cm}
+  	\includegraphics[scale=0.3]{annoy_vs_hnsw_vespa_recall_vs_index_size_nytimes_labels} 	
+  \end{figure} 
+  \vspace{-0.3cm}
+  \scriptsize \centering \url{https://ann-benchmarks.com/nytimes-256-angular_10_angular.html} 
+  \end{frame}
+
 
 \section{}
+  \begin{frame}
+    \frametitle{Summary}  
+    \Large
+   	\begin{itemize}
+   		\onslide<2->{
+		\item HNSW algorithm combines navigable small world graphs with idea from skiplists to improve performance}
+		\onslide<3->{		
+		\item Performs well on high-dimensional data
+		}
+		\onslide<4->{		
+		\item Supports adding new vectors without rebuilding graph from scratch
+		}
+	\end{itemize}
+  \end{frame}
+
   \begin{frame}
     \frametitle{References}  
     \small
