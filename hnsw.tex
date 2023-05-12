@@ -62,7 +62,7 @@
     \frametitle{Voronoi diagram for a set of points}  
   \begin{figure}[original_points]
     \vspace*{-0.1cm}
-  	\includegraphics[scale=0.25]{original_points} 	
+  	\includegraphics[scale=0.3]{original_points} 	
   \end{figure} 
   \end{frame}
   \begin{frame}
@@ -240,6 +240,8 @@
           \begin{figure}[delaunay_triangulation_start_end_points]
   \includesvg[scale=0.5]{delaunay_triangulation_start_end_points}
   \end{figure}
+  \vspace{-0.5cm}
+    \centering Start and end nodes in red
   \end{frame}  
 
   \begin{frame}
@@ -355,7 +357,7 @@
 		\item Calculate distance from query to all neighbors of candidate
 		}
 		\onslide<5->{
-		\item Add to result set and to candidate queue all neighbors who are closer to query than the kth result in the queue
+		\item Add to result and candidate queue all neighbors who are closer to query than the kth result in the queue
 		}
 		\onslide<6->{
 		\item Repeat until step 2 returns a candidate that's further away than the kth result in the queue} 
@@ -440,7 +442,7 @@
    		\onslide<2->{
 		\item Randomly select (using exponential decay) the maximal layer $l$ the new data point should be inserted in}
 		\onslide<3->{		
-		\item Find the nearest neigbhor in the layer $l + 1$ using greedy search}
+		\item Find the nearest neighbor in the layer $l + 1$ using greedy search}
 		\onslide<4->{		
 		\item For each layer $l, \ldots, 0$, connect node to $M$ nearest neighbors (found using kNN algorithm)
 		}
@@ -459,7 +461,7 @@
    		\onslide<2->{
 		\item $M$ - amount of neighbors to connect to in each layer when constructing index (called \textit{max-links-per-node} in Vespa)}
 		\onslide<3->{		
-		\item $efConstruction$ - amount of neighbors to explore in the kNN search when constructing index (\textit{neighbors-to-explore-at-insert} in Vespa}
+		\item $efConstruction$ - amount of neighbors to explore in the kNN search when constructing index (\textit{neighbors-to-explore-at-insert} in Vespa)}
 		\onslide<4->{		
 		\item $ef$ - amount of neighbors to explore in the kNN search during inference (\textit{exploreAdditionalHits} in Vespa)
 		}
