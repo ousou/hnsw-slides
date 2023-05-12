@@ -435,7 +435,35 @@
 
   \begin{frame}
     \frametitle{Construction of HNSW index}  
+   	\begin{enumerate}
 
+   		\onslide<2->{
+		\item Randomly select (using exponential decay) the maximal layer $l$ the new data point should be inserted in}
+		\onslide<3->{		
+		\item Find the nearest neigbhor in the layer $l + 1$ using greedy search}
+		\onslide<4->{		
+		\item For each layer $l, \ldots, 0$, connect node to $M$ nearest neighbors (found using kNN algorithm)
+		}
+		\begin{itemize}
+		\onslide<5->{
+		    \item After adding nearest neighbors to node, prune connections from neighbors if number exceeds $M$
+		}
+		\end{itemize}
+	\end{enumerate} 
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Hyperparameters for HNSW}  
+   	\begin{enumerate}
+
+   		\onslide<2->{
+		\item $M$ - amount of neighbors to connect to in each layer when constructing index (called \textit{max-links-per-node} in Vespa)}
+		\onslide<3->{		
+		\item $efConstruction$ - amount of neighbors to explore in the kNN search when constructing index (\textit{neighbors-to-explore-at-insert} in Vespa}
+		\onslide<4->{		
+		\item $ef$ - amount of neighbors to explore in the kNN search during inference (\textit{exploreAdditionalHits} in Vespa)
+		}
+	\end{enumerate} 
   \end{frame}
 
   \begin{frame}
